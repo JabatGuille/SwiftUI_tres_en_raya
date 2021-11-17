@@ -17,32 +17,52 @@ struct ContentView: View {
     @State var btn8 : String = "  "
     @State var btn9 : String = "  "
     @State var con : Int = 0
+    @State var jugador : Bool = false
     @State var victoria = false
     @State var numero : Int = 0
     @State var simbolo :String = ""
     @State var perro : Int = 0
     @State var gato : Int = 0
+    @State var modojuego : ModoDeJuego = ModoDeJuego.Multijugador
+    enum ModoDeJuego: String, CaseIterable, Identifiable {
+        case Multijugador
+        case Maquina
+
+        var id: String { self.rawValue }
+    }
     var body: some View {
         VStack{
             Spacer()
             VStack{
+
+                Picker("Multijugador", selection: $modojuego){
+                    Text("1 jugador").tag(ModoDeJuego.Maquina)
+                    Text("2 jugadores").tag(ModoDeJuego.Multijugador)
+                }.pickerStyle(.segmented)
+
                 HStack{
-                    
                     Button(btn1)
                     {
-                        btn1 = tresenraya(contador: con, btn:btn1)
+                        btn1 = tresenraya(jugador: jugador, btn:btn1)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -60,19 +80,26 @@ struct ContentView: View {
                     
                     Button(btn2)
                     {
-                        btn2 = tresenraya(contador: con, btn:btn2)
+                        btn2 = tresenraya(jugador: jugador, btn:btn2)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -90,19 +117,26 @@ struct ContentView: View {
                     
                     Button(btn3)
                     {
-                        btn3 = tresenraya(contador: con, btn:btn3)
+                        btn3 = tresenraya(jugador: jugador, btn:btn3)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -122,19 +156,26 @@ struct ContentView: View {
                 HStack{
                     Button(btn4)
                     {
-                        btn4 = tresenraya(contador: con, btn:btn4)
+                        btn4 = tresenraya(jugador: jugador, btn:btn4)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -152,19 +193,26 @@ struct ContentView: View {
                     
                     Button(btn5)
                     {
-                        btn5 = tresenraya(contador: con, btn:btn5)
+                        btn5 = tresenraya(jugador: jugador, btn:btn5)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -182,19 +230,26 @@ struct ContentView: View {
                     
                     Button(btn6)
                     {
-                        btn6 = tresenraya(contador: con, btn:btn6)
+                        btn6 = tresenraya(jugador: jugador, btn:btn6)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -214,19 +269,26 @@ struct ContentView: View {
                 HStack{
                     Button(btn7)
                     {
-                        btn7 = tresenraya(contador: con, btn:btn7)
+                        btn7 = tresenraya(jugador: jugador, btn:btn7)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -244,19 +306,26 @@ struct ContentView: View {
                     
                     Button(btn8)
                     {
-                        btn8 = tresenraya(contador: con, btn:btn8)
+                        btn8 = tresenraya(jugador: jugador, btn:btn8)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -274,19 +343,26 @@ struct ContentView: View {
                     
                     Button(btn9)
                     {
-                        btn9 = tresenraya(contador: con, btn:btn9)
+                        btn9 = tresenraya(jugador: jugador, btn:btn9)
                         con += 1
+                        if jugador{
+                            jugador = false
+                        }else{
+                            jugador = true
+                        }
                         numero = juegacion(b1: btn1, b2: btn2, b3: btn3, b4: btn4, b5: btn5, b6: btn6, b7: btn7, b8: btn8, b9: btn9,contador: con)
                         if numero == 1{
                             simbolo = "Ganador 🐕"
                             victoria = true
                             limpiar()
+                            jugador = true
                         perro = perro+1
                         }else if numero == 2
                         {
                             simbolo = "Ganador 🐈"
                             victoria = true
                             limpiar()
+                            jugador = false
                             gato = gato+1
                         }else if numero == 3{
                             simbolo = "Empate"
@@ -336,6 +412,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
     
-    
+
 }
 

@@ -7,14 +7,14 @@
 
 import Foundation
 
-func tresenraya(contador : Int,btn :String) -> String
+func tresenraya(jugador : Bool,btn :String) -> String
 {
     var boton : String
     
-    if contador % 2 == 0 && btn == "  "
+    if jugador==true && btn == "  "
     {
         boton = "🐕"
-    }else if contador % 2 != 0 && btn == "  "{
+    }else if jugador == false && btn == "  "{
         boton = "🐈"
     }
     else{
